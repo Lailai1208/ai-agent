@@ -1,9 +1,31 @@
-{ 
+{
   "name": "ai-agent",
-  "description": "for the AI Agent project, retain this package.json file only sets up Husky for managing Git hooks.",
+  "version": "1.0.0",
+  "description": "AI Agent project with Next.js frontend and FastAPI backend",
+  "private": true,
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "setup": "./setup.sh",
+    "dev": "./dev-start.sh",
+    "dev:frontend": "cd frontend-nextjs && npm run dev",
+    "dev:backend": "cd backend && ./start.sh",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend-nextjs && npm run build",
+    "lint": "npm run lint:frontend",
+    "lint:frontend": "cd frontend-nextjs && npm run lint",
+    "format": "npm run format:frontend",
+    "format:frontend": "cd frontend-nextjs && npm run format",
+    "health-check": "./health-check.sh"
   },
+  "keywords": [
+    "ai",
+    "nextjs",
+    "fastapi",
+    "typescript",
+    "python"
+  ],
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
     "husky": "^9.1.7"
   }
