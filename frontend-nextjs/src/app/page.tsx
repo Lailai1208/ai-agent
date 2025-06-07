@@ -1,178 +1,36 @@
 // src/app/page.tsx
 'use client';
 
-import { Button, Title, Card, Group, Text, Badge } from '@mantine/core';
-import { useApp } from '@/context/AppContext';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { formatDate } from '@/utils/helpers';
-import { APP_NAME } from '@/lib/constants';
-import { notifications } from '@mantine/notifications';
+import {
+  HomePageHeader,
+  ThemeControlCard,
+  LocalStorageCard,
+  NotificationCard,
+  UtilityTestCard,
+  StyleTestsCard,
+  SuccessCard,
+} from '@/components/features/HomePage';
 
 export default function Home() {
-  const { theme, toggleTheme } = useApp();
-  const [count, setCount] = useLocalStorage('count', 0);
-
-  const handleNotification = () => {
-    notifications.show({
-      title: '測試通知',
-      message: '所有功能都正常運作！',
-      color: 'green',
-    });
-  };
-
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* 標題區域 */}
-        <div className="text-center">
-          <Title order={1} className="mb-4 text-gray-800">
-            🎉 {APP_NAME}
-          </Title>
-          <Text size="lg" className="text-gray-600">
-            Mantine + Tailwind CSS + TypeScript 完美整合
-          </Text>
-          <Badge color="blue" variant="light" className="mt-2">
-            {formatDate(new Date())}
-          </Badge>
-        </div>
+        <HomePageHeader />
 
         {/* 功能測試區域 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={3} className="mb-4">
-              🎨 主題控制
-            </Title>
-            <Text className="mb-4">
-              目前主題: <strong>{theme}</strong>
-            </Text>
-            <Button onClick={toggleTheme} variant="light" color="blue">
-              切換主題
-            </Button>
-          </Card>
-
-          <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={3} className="mb-4">
-              💾 本地儲存測試
-            </Title>
-            <Text className="mb-4">
-              計數器: <strong>{count}</strong>
-            </Text>
-            <Group gap="sm">
-              <Button
-                onClick={() => setCount(count + 1)}
-                variant="filled"
-                color="green"
-              >
-                增加
-              </Button>
-              <Button
-                onClick={() => setCount(Math.max(0, count - 1))}
-                variant="outline"
-                color="red"
-              >
-                減少
-              </Button>
-            </Group>
-          </Card>
-
-          <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={3} className="mb-4">
-              🔔 通知系統
-            </Title>
-            <Text className="mb-4">測試 Mantine 通知功能</Text>
-            <Button
-              onClick={handleNotification}
-              variant="gradient"
-              gradient={{ from: 'blue', to: 'cyan' }}
-            >
-              顯示通知
-            </Button>
-          </Card>
-
-          <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={3} className="mb-4">
-              🛠 工具函式測試
-            </Title>
-            <Text className="mb-2">
-              <strong>格式化日期:</strong> {formatDate(new Date())}
-            </Text>
-            <Text className="mb-2">
-              <strong>應用程式名稱:</strong> {APP_NAME}
-            </Text>
-            <Text>
-              <strong>環境:</strong> {process.env.NODE_ENV}
-            </Text>
-          </Card>
+          <ThemeControlCard />
+          <LocalStorageCard />
+          <NotificationCard />
+          <UtilityTestCard />
         </div>
 
         {/* Tailwind CSS 樣式測試 */}
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-          <Title order={3} className="mb-4">
-            🎨 Tailwind CSS + Mantine 整合測試
-          </Title>
-
-          <div className="space-y-4">
-            {/* 測試混合樣式 */}
-            <div className="bg-gradient-to-r from-purple-400 to-pink-400 p-4 rounded-lg text-white">
-              <Text className="font-bold">Tailwind 漸層背景</Text>
-              <Text size="sm">這是使用 Tailwind CSS 類別的漸層背景</Text>
-            </div>
-
-            {/* 測試響應式網格 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="bg-blue-100 p-4 rounded text-center">
-                <Text className="font-semibold text-blue-800">響應式</Text>
-              </div>
-              <div className="bg-green-100 p-4 rounded text-center">
-                <Text className="font-semibold text-green-800">網格</Text>
-              </div>
-              <div className="bg-orange-100 p-4 rounded text-center">
-                <Text className="font-semibold text-orange-800">佈局</Text>
-              </div>
-            </div>
-
-            {/* 測試 Mantine 元件 + Tailwind 類別 */}
-            <Group justify="center" className="mt-6">
-              <Button
-                variant="filled"
-                color="blue"
-                className="shadow-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                Mantine + Tailwind 按鈕
-              </Button>
-              <Button
-                variant="outline"
-                color="green"
-                className="border-2 hover:border-green-400 transition-colors"
-              >
-                混合樣式按鈕
-              </Button>
-            </Group>
-          </div>
-        </Card>
+        <StyleTestsCard />
 
         {/* 成功提示 */}
-        <Card
-          shadow="sm"
-          padding="lg"
-          radius="md"
-          withBorder
-          className="bg-green-50 border-green-200"
-        >
-          <div className="text-center">
-            <Title order={2} className="text-green-800 mb-2">
-              ✅ 設置完成！
-            </Title>
-            <Text className="text-green-700">
-              如果您能看到這個頁面且所有功能都正常運作，表示您的 Next.js
-              專案設置成功！
-            </Text>
-            <Text size="sm" className="text-green-600 mt-2">
-              Mantine 元件、Tailwind CSS 樣式、TypeScript
-              類型檢查、狀態管理都已正常運作
-            </Text>
-          </div>
-        </Card>
+        <SuccessCard />
       </div>
     </main>
   );
