@@ -1,7 +1,13 @@
 .env*.local
 .env
+!.env.example
+!.env.local-example
+
 node_modules/
 .next/
 .vercel/
 *.log
 .venv
+__pycache__/
+*.pyc
+*.pyo
