@@ -2,14 +2,16 @@
 AI model interaction endpoints.
 """
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request  # Add Request
 from pydantic import BaseModel
 from typing import Optional, Dict, Any
 from app.core.config import settings
 import httpx
 import os
+import logging
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 class ChatRequest(BaseModel):
     """Chat request model."""
@@ -70,6 +72,14 @@ async def list_available_models():
 @router.post("/chat/ollama")
 async def chat_with_ollama(request: ChatRequest):
     """Chat with Ollama model."""
+    # Add debugging information
+    print(f"🔍 Ollama endpoint received request:")
+    print(f"  - Type: {type(request)}")
+    print(f"  - Message: {request.message}")
+    print(f"  - Model: {request.model}")
+    print(f"  - Temperature: {request.temperature}")
+    print(f"  - Max tokens: {request.max_tokens}")
+    
     try:
         model_name = request.model or settings.OLLAMA_MODEL
         
@@ -114,8 +124,23 @@ async def chat_with_ollama(request: ChatRequest):
         )
 
 @router.post("/chat/nvidia")
-async def chat_with_nvidia(request: ChatRequest):
+async def chat_with_nvidia(request: Request, payload: ChatRequest):  # Add request: Request
     """Chat with NVIDIA NIM model."""
+    # Add debugging information
+    print(f"🔍 NVIDIA endpoint received request:")
+    print(f"  - Type: {type(payload)}")
+    print(f"  - Message: {payload.message}")
+    print(f"  - Model: {payload.model}")
+    print(f"  - Temperature: {payload.temperature}")
+    print(f"  - Max tokens: {payload.max_tokens}")
+    
+    # Log headers
+    logger.info(f"NVIDIA chat request headers: {request.headers}")
+
+    # Log raw body
+    raw_body = await request.body()
+    logger.info(f"NVIDIA chat raw request body: {raw_body.decode()}")
+    
     if not settings.NIM_DEEPSEEK_R1_API:
         raise HTTPException(
             status_code=400,
@@ -130,11 +155,11 @@ async def chat_with_nvidia(request: ChatRequest):
         llm = ChatNVIDIA(
             model="deepseek-ai/deepseek-r1",
             api_key=settings.NIM_DEEPSEEK_R1_API,
-            temperature=request.temperature or 0.6,
-            max_tokens=request.max_tokens or 1000,
+            temperature=payload.temperature or 0.6,
+            max_tokens=payload.max_tokens or 1000,
         )
         
-        response = llm.invoke(request.message)
+        response = llm.invoke(payload.message)
         
         return ChatResponse(
             response=response.content,
@@ -148,6 +173,7 @@ async def chat_with_nvidia(request: ChatRequest):
             detail="NVIDIA AI endpoints package not available"
         )
     except Exception as e:
+        logger.error(f"Error in NVIDIA chat endpoint: {e}")
         raise HTTPException(
             status_code=500,
             detail=f"Error communicating with NVIDIA NIM: {str(e)}"

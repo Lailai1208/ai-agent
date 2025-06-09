@@ -18,7 +18,7 @@ llm = ChatNVIDIA(
   max_tokens=4096,
 )
 
-for chunk in llm.stream("Intro"):
+for chunk in llm.stream("Introduce yourself"):
     # Show the token separations
     print(chunk.content, end="")
 

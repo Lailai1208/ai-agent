@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Integration Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">🔗 前後端連接測試</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <button id="test-health" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg">
+                🏥 健康檢查
+            </button>
+            <button id="test-root" class="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-lg">
+                📡 API 資訊
+            </button>
+            <button id="test-all" class="bg-purple-500 hover:bg-purple-600 text-white p-4 rounded-lg">
+                🚀 全部測試
+            </button>
+        </div>
+        
+        <div id="results" class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">測試結果：</h2>
+            <div id="output" class="text-gray-600">點擊上方按鈕開始測試...</div>
+        </div>
+    </div>
+
+    <script>
+        const BACKEND_URL = 'http://localhost:8000';
+        
+        function updateOutput(message, isError = false) {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString();
+            const color = isError ? 'text-red-600' : 'text-green-600';
+            output.innerHTML += `<div class="${color}">[${timestamp}] ${message}</div>`;
+        }
+        
+        async function testHealth() {
+            updateOutput('🏥 開始健康檢查...');
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/v1/health/`);
+                const data = await response.json();
+                updateOutput(`✅ 健康檢查成功: ${data.message} (狀態: ${data.status})`);
+                updateOutput(`📊 回應數據: ${JSON.stringify(data, null, 2)}`);
+            } catch (error) {
+                updateOutput(`❌ 健康檢查失敗: ${error.message}`, true);
+            }
+        }
+        
+        async function testRoot() {
+            updateOutput('📡 開始獲取 API 資訊...');
+            try {
+                const response = await fetch(`${BACKEND_URL}/`);
+                const data = await response.json();
+                updateOutput(`✅ API 資訊獲取成功`);
+                updateOutput(`📊 回應數據: ${JSON.stringify(data, null, 2)}`);
+            } catch (error) {
+                updateOutput(`❌ API 資訊獲取失敗: ${error.message}`, true);
+            }
+        }
+        
+        async function testAll() {
+            updateOutput('🚀 開始全部測試...');
+            document.getElementById('output').innerHTML = '';
+            await testHealth();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            await testRoot();
+            updateOutput('🎉 所有測試完成！');
+        }
+        
+        document.getElementById('test-health').addEventListener('click', testHealth);
+        document.getElementById('test-root').addEventListener('click', testRoot);
+        document.getElementById('test-all').addEventListener('click', testAll);
+    </script>
+</body>
+</html>

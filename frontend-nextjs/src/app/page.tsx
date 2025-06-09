@@ -10,6 +10,7 @@ import {
   StyleTestsCard,
   SuccessCard,
 } from '@/components/features/HomePage';
+import { BackendTestCard } from '@/components/features/Integration';
 
 export default function Home() {
   return (
@@ -25,6 +26,9 @@ export default function Home() {
           <NotificationCard />
           <UtilityTestCard />
         </div>
+
+        {/* 後端整合測試區域 */}
+        <BackendTestCard />
 
         {/* Tailwind CSS 樣式測試 */}
         <StyleTestsCard />

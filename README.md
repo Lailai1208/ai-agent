@@ -141,6 +141,88 @@ Components (React) → Context (State) → Services (API) → Backend
 Endpoints → API Router → Core Logic → AI Models → External APIs
 ```
 
+## 🔗 Frontend-Backend Integration Guide
+
+### Quick Integration Test
+
+1. **Start Both Services**:
+   ```bash
+   ./dev-start.sh
+   ```
+
+2. **Verify Integration**:
+   - Visit http://localhost:3000
+   - Click "AI 模型測試" button
+   - Select NVIDIA NIM or Ollama provider
+   - Check response results
+
+### Common Issues & Solutions
+
+#### 422 Unprocessable Entity
+- **Problem**: Request format missing required fields
+- **Solution**: Ensure request includes `message`, `model`, `temperature`, `max_tokens`
+- **Debug**: Check browser DevTools → Network tab for request payload
+
+#### CORS Errors
+- **Problem**: Cross-origin request blocked
+- **Solution**: Verify backend CORS settings include frontend URL
+- **Debug**: Check if backend returns 500 error (causes missing CORS headers)
+
+#### Timeout Errors  
+- **Problem**: AI model responses take time
+- **Solution**: Frontend uses 120-second timeout for AI endpoints
+- **Debug**: Monitor backend logs for actual processing time
+
+### Environment Setup
+
+#### Frontend (.env.local)
+```bash
+NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
+```
+
+#### Backend (.env)
+```bash
+# AI Model APIs
+NIM_DEEPSEEK_R1_API=your_nvidia_api_key
+OLLAMA_API_BASE=http://127.0.0.1:11434
+OLLAMA_MODEL=qwen2:7b
+
+# Server Configuration
+DEBUG=true
+LOG_LEVEL=INFO
+```
+
+### Development Workflow
+
+1. **Backend Development** → Test with curl
+2. **Frontend Service Development** → Mock data testing  
+3. **Integration Testing** → Frontend ↔ Backend communication
+4. **Error Handling** → Log analysis and debugging
+5. **Performance Optimization** → Timeout and retry configuration
+
+### API Integration Architecture
+
+```
+Frontend TypeScript → ApiClient → Endpoints → Backend FastAPI
+     ↓                   ↓           ↓            ↓
+Error Handling    Request Format  Timeout     Response Format
+```
+
+#### Request Flow Example (NVIDIA NIM):
+
+1. **Frontend**: User clicks test button
+2. **BackendService**: Constructs `AIModelRequest` object
+3. **ApiClient**: Sets headers, serializes JSON, applies timeout
+4. **Backend**: Validates request, calls NVIDIA NIM API
+5. **Response**: AI model result returned to frontend
+
+#### Critical Integration Points:
+
+- **Content-Type**: Must be `application/json`
+- **Request Structure**: Complete `AIModelRequest` with all required fields
+- **Timeout Handling**: 120s for AI endpoints, 60s for others
+- **Error Serialization**: Detailed error information for debugging
+
 ## 🔐 Environment Configuration
 
 ### Frontend (.env.local)
@@ -195,26 +277,28 @@ uv pip install -r requirements.txt  # Install dependencies
 4. Push to branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
-## 📝 API Documentation
+## 📚 Documentation
 
-Visit http://localhost:8000/docs when the backend is running for interactive API documentation.
+📋 **[Documentation Overview](./DOCUMENTATION_OVERVIEW.md)** - Complete guide to all project documentation
 
-### Key Endpoints
+### 📖 Core Documentation
+- **[Getting Started](#🚀-quick-start)** - Quick setup and installation
+- **[API Reference](./API_REFERENCE.md)** - Complete API documentation with examples
+- **[Frontend-Backend Integration](#🔗-frontend-backend-integration-guide)** - Integration guide and troubleshooting
 
-- `GET /api/v1/health/` - Health check
-- `GET /api/v1/ai/models` - List available AI models
-- `POST /api/v1/ai/chat/ollama` - Chat with Ollama models
-- `POST /api/v1/ai/chat/nvidia` - Chat with NVIDIA NIM models
+### 📋 Comprehensive Guides
+- **[Contributing Guide](./CONTRIBUTING.md)** - How to contribute to the project
+- **[Deployment Guide](./DEPLOYMENT.md)** - Production deployment strategies
+- **[Testing Guide](./TESTING.md)** - Complete testing framework and strategies
+- **[Security Guide](./SECURITY.md)** - Security best practices and implementation
 
-## 🔍 Monitoring & Debugging
+### 📊 Project Status
+- **[Development Guide](./DEVELOPMENT.md)** - Development workflow and standards
+- **[Project Status](./PROJECT_STATUS.md)** - Current development status and roadmap
 
-- **Frontend**: React DevTools, Next.js built-in debugging
-- **Backend**: FastAPI automatic docs, Python debugging
-- **Network**: Browser DevTools Network tab for API calls
-
-## 📞 Support
-
-For questions or issues, please open an issue in the repository.
+### 🔧 Technical Guides
+- **[Error Display Testing](./ERROR_DISPLAY_TEST_GUIDE.md)** - Error handling and display testing
+- **[Provider Selection Summary](./PROVIDER_SELECTION_SUMMARY.md)** - AI provider integration summary
 
 ---
 
