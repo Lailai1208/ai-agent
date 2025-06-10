@@ -5,56 +5,56 @@ Welcome to the AI Agent project documentation! This guide provides a complete ov
 ## 📚 Documentation Structure
 
 ### 🚀 **Getting Started**
-- **[README.md](./README.md)** - Main project overview and quick start guide
-- **[setup.sh](./setup.sh)** - Automated project setup script
-- **[dev-start.sh](./dev-start.sh)** - Development environment startup
+- **[README.md](../../README.md)** - Main project overview and quick start guide
+- **[setup.sh](../../setup.sh)** - Automated project setup script
+- **[dev-start.sh](../../dev-start.sh)** - Development environment startup
 
 ### 📖 **Core Technical Documentation**
 
 #### API & Integration
-- **[API Reference](./API_REFERENCE.md)** - Complete API documentation with examples
-- **[Backend API Documentation](./backend/README.md)** - Detailed backend API specs
-- **[Frontend API Integration](./frontend-nextjs/README.md)** - Frontend service integration guide
+- **[API Reference](../guides/API_REFERENCE.md)** - Complete API documentation with examples
+- **[Backend API Documentation](../../backend/README.md)** - Detailed backend API specs
+- **[Frontend API Integration](../../frontend-nextjs/README.md)** - Frontend service integration guide
 
 #### Development & Contribution
-- **[Contributing Guide](./CONTRIBUTING.md)** - How to contribute to the project
-- **[Development Guide](./DEVELOPMENT.md)** - Development workflow and standards
-- **[Testing Guide](./TESTING.md)** - Comprehensive testing strategies
+- **[Contributing Guide](../development/CONTRIBUTING.md)** - How to contribute to the project
+- **[Development Guide](../development/DEVELOPMENT.md)** - Development workflow and standards
+- **[Testing Guide](../development/TESTING.md)** - Comprehensive testing strategies
 
 #### Deployment & Operations
-- **[Deployment Guide](./DEPLOYMENT.md)** - Production deployment strategies
-- **[Security Guide](./SECURITY.md)** - Security best practices and implementation
+- **[Deployment Guide](../deployment/DEPLOYMENT.md)** - Production deployment strategies
+- **[Security Guide](../deployment/SECURITY.md)** - Security best practices and implementation
 
 ### 📊 **Project Status & Guides**
 - **[Project Status](./PROJECT_STATUS.md)** - Current development status and roadmap
-- **[Error Display Testing](./ERROR_DISPLAY_TEST_GUIDE.md)** - Error handling testing
-- **[Provider Selection Summary](./PROVIDER_SELECTION_SUMMARY.md)** - AI provider integration
+- **[Error Display Testing](../guides/ERROR_DISPLAY_TEST_GUIDE.md)** - Error handling testing
+- **[Provider Selection Summary](../guides/PROVIDER_SELECTION_SUMMARY.md)** - AI provider integration
 
 ### 🛠️ **Utility Scripts**
-- **[health-check.sh](./health-check.sh)** - System health verification
-- **[test-provider-integration.sh](./test-provider-integration.sh)** - Provider integration testing
+- **[health-check.sh](../../health-check.sh)** - System health verification
+- **[test-provider-integration.sh](../../test-provider-integration.sh)** - Provider integration testing
 
 ## 🎯 Quick Navigation
 
 ### For New Users
-1. Start with **[README.md](./README.md)** for project overview
-2. Run **[setup.sh](./setup.sh)** for automated setup
-3. Check **[health-check.sh](./health-check.sh)** to verify installation
+1. Start with **[README.md](../../README.md)** for project overview
+2. Run **[setup.sh](../../setup.sh)** for automated setup
+3. Check **[health-check.sh](../../health-check.sh)** to verify installation
 
 ### For Developers
-1. Read **[Contributing Guide](./CONTRIBUTING.md)** for development workflow
-2. Review **[Testing Guide](./TESTING.md)** for testing practices
-3. Consult **[API Reference](./API_REFERENCE.md)** for API details
+1. Read **[Contributing Guide](../development/CONTRIBUTING.md)** for development workflow
+2. Review **[Testing Guide](../development/TESTING.md)** for testing practices
+3. Consult **[API Reference](../guides/API_REFERENCE.md)** for API details
 
 ### For DevOps
-1. Study **[Deployment Guide](./DEPLOYMENT.md)** for production setup
-2. Review **[Security Guide](./SECURITY.md)** for security measures
-3. Check **[Backend Documentation](./backend/README.md)** for API configuration
+1. Study **[Deployment Guide](../deployment/DEPLOYMENT.md)** for production setup
+2. Review **[Security Guide](../deployment/SECURITY.md)** for security measures
+3. Check **[Backend Documentation](../../backend/README.md)** for API configuration
 
 ### For Integrators
-1. Start with **[API Reference](./API_REFERENCE.md)** for API specs
-2. Review **[Frontend Integration](./frontend-nextjs/README.md)** for client examples
-3. Use **[test-provider-integration.sh](./test-provider-integration.sh)** for testing
+1. Start with **[API Reference](../guides/API_REFERENCE.md)** for API specs
+2. Review **[Frontend Integration](../../frontend-nextjs/README.md)** for client examples
+3. Use **[test-provider-integration.sh](../../test-provider-integration.sh)** for testing
 
 ## 📋 Documentation Standards
 
@@ -92,24 +92,24 @@ Welcome to the AI Agent project documentation! This guide provides a complete ov
 
 | I want to... | Start here | Then check |
 |-------------|------------|------------|
-| Set up the project | [README.md](./README.md) | [setup.sh](./setup.sh) |
-| Understand the API | [API_REFERENCE.md](./API_REFERENCE.md) | [Backend README](./backend/README.md) |
-| Contribute code | [CONTRIBUTING.md](./CONTRIBUTING.md) | [TESTING.md](./TESTING.md) |
-| Deploy to production | [DEPLOYMENT.md](./DEPLOYMENT.md) | [SECURITY.md](./SECURITY.md) |
-| Integrate with frontend | [Frontend README](./frontend-nextjs/README.md) | [API_REFERENCE.md](./API_REFERENCE.md) |
-| Test AI providers | [Provider Summary](./PROVIDER_SELECTION_SUMMARY.md) | [test-provider-integration.sh](./test-provider-integration.sh) |
-| Debug issues | [Error Testing Guide](./ERROR_DISPLAY_TEST_GUIDE.md) | [health-check.sh](./health-check.sh) |
+| Set up the project | [README.md](../../README.md) | [setup.sh](../../setup.sh) |
+| Understand the API | [API_REFERENCE.md](../guides/API_REFERENCE.md) | [Backend README](../../backend/README.md) |
+| Contribute code | [CONTRIBUTING.md](../development/CONTRIBUTING.md) | [TESTING.md](../development/TESTING.md) |
+| Deploy to production | [DEPLOYMENT.md](../deployment/DEPLOYMENT.md) | [SECURITY.md](../deployment/SECURITY.md) |
+| Integrate with frontend | [Frontend README](../../frontend-nextjs/README.md) | [API_REFERENCE.md](../guides/API_REFERENCE.md) |
+| Test AI providers | [Provider Summary](../guides/PROVIDER_SELECTION_SUMMARY.md) | [test-provider-integration.sh](../../test-provider-integration.sh) |
+| Debug issues | [Error Testing Guide](../guides/ERROR_DISPLAY_TEST_GUIDE.md) | [health-check.sh](../../health-check.sh) |
 
 ### By Technology
 
 | Technology | Documentation | Examples |
 |------------|---------------|----------|
-| **Next.js Frontend** | [Frontend README](./frontend-nextjs/README.md) | TypeScript components, API integration |
-| **FastAPI Backend** | [Backend README](./backend/README.md) | Python endpoints, Pydantic models |
-| **AI Integration** | [Provider Summary](./PROVIDER_SELECTION_SUMMARY.md) | NVIDIA NIM, Ollama examples |
-| **Testing** | [TESTING.md](./TESTING.md) | Jest, Pytest, Playwright examples |
-| **Deployment** | [DEPLOYMENT.md](./DEPLOYMENT.md) | Docker, CI/CD, cloud deployment |
-| **Security** | [SECURITY.md](./SECURITY.md) | Authentication, rate limiting, validation |
+| **Next.js Frontend** | [Frontend README](../../frontend-nextjs/README.md) | TypeScript components, API integration |
+| **FastAPI Backend** | [Backend README](../../backend/README.md) | Python endpoints, Pydantic models |
+| **AI Integration** | [Provider Summary](../guides/PROVIDER_SELECTION_SUMMARY.md) | NVIDIA NIM, Ollama examples |
+| **Testing** | [TESTING.md](../development/TESTING.md) | Jest, Pytest, Playwright examples |
+| **Deployment** | [DEPLOYMENT.md](../deployment/DEPLOYMENT.md) | Docker, CI/CD, cloud deployment |
+| **Security** | [SECURITY.md](../deployment/SECURITY.md) | Authentication, rate limiting, validation |
 
 ## 📝 Keeping Documentation Updated
 

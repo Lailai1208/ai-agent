@@ -279,26 +279,26 @@ uv pip install -r requirements.txt  # Install dependencies
 
 ## 📚 Documentation
 
-📋 **[Documentation Overview](./DOCUMENTATION_OVERVIEW.md)** - Complete guide to all project documentation
+📋 **[Documentation Overview](./docs/project/DOCUMENTATION_OVERVIEW.md)** - Complete guide to all project documentation
 
 ### 📖 Core Documentation
 - **[Getting Started](#🚀-quick-start)** - Quick setup and installation
-- **[API Reference](./API_REFERENCE.md)** - Complete API documentation with examples
+- **[API Reference](./docs/guides/API_REFERENCE.md)** - Complete API documentation with examples
 - **[Frontend-Backend Integration](#🔗-frontend-backend-integration-guide)** - Integration guide and troubleshooting
 
 ### 📋 Comprehensive Guides
-- **[Contributing Guide](./CONTRIBUTING.md)** - How to contribute to the project
-- **[Deployment Guide](./DEPLOYMENT.md)** - Production deployment strategies
-- **[Testing Guide](./TESTING.md)** - Complete testing framework and strategies
-- **[Security Guide](./SECURITY.md)** - Security best practices and implementation
+- **[Contributing Guide](./docs/development/CONTRIBUTING.md)** - How to contribute to the project
+- **[Deployment Guide](./docs/deployment/DEPLOYMENT.md)** - Production deployment strategies
+- **[Testing Guide](./docs/development/TESTING.md)** - Complete testing framework and strategies
+- **[Security Guide](./docs/deployment/SECURITY.md)** - Security best practices and implementation
 
 ### 📊 Project Status
-- **[Development Guide](./DEVELOPMENT.md)** - Development workflow and standards
-- **[Project Status](./PROJECT_STATUS.md)** - Current development status and roadmap
+- **[Development Guide](./docs/development/DEVELOPMENT.md)** - Development workflow and standards
+- **[Project Status](./docs/project/PROJECT_STATUS.md)** - Current development status and roadmap
 
 ### 🔧 Technical Guides
-- **[Error Display Testing](./ERROR_DISPLAY_TEST_GUIDE.md)** - Error handling and display testing
-- **[Provider Selection Summary](./PROVIDER_SELECTION_SUMMARY.md)** - AI provider integration summary
+- **[Error Display Testing](./docs/guides/ERROR_DISPLAY_TEST_GUIDE.md)** - Error handling and display testing
+- **[Provider Selection Summary](./docs/guides/PROVIDER_SELECTION_SUMMARY.md)** - AI provider integration summary
 
 ---
 
