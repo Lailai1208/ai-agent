@@ -290,7 +290,7 @@ uv pip install -r requirements.txt  # Install dependencies
 - **[Contributing Guide](./docs/development/CONTRIBUTING.md)** - How to contribute to the project
 - **[Deployment Guide](./docs/deployment/DEPLOYMENT.md)** - Production deployment strategies
 - **[Testing Guide](./docs/development/TESTING.md)** - Complete testing framework and strategies
-- **[Security Guide](./docs/deployment/SECURITY.md)** - Security best practices and implementation
+
 
 ### 📊 Project Status
 - **[Development Guide](./docs/development/DEVELOPMENT.md)** - Development workflow and standards
