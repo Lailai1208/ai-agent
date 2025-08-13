@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**Project Overview**: AI Agent application with Next.js frontend, FastAPI backend, and integrated Memory Bank system for rapid iteration development using adapted SPARC methodology.
+
 ## Development Commands
 
 ### Quick Start
@@ -145,5 +147,78 @@ app/
 - Manual API testing with comprehensive logging
 - Frontend error boundaries for graceful failure handling
 
+### Documentation & Project Management
+- The `docs/` directory is the single source of truth for all **formal project documentation**.
+- The `memory-bank/` directory serves as the **dynamic development knowledge base** for iterative learning and task coordination.
+
+**Documentation Hierarchy**:
+- **`docs/`**: Stable, formal documentation (API specs, deployment guides, contribution rules)
+- **`memory-bank/`**: Dynamic development memory (decisions, experiments, active tasks, failures)
+
+**SPARC Methodology Integration**:
+This project follows an adapted SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) methodology optimized for rapid iteration:
+- **Lightweight Specification**: Core features documented in `memory-bank/tasks/`
+- **Iterative Architecture**: Key decisions tracked in `memory-bank/knowledge/architectural-decisions/`
+- **Continuous Refinement**: Issues and solutions captured in `memory-bank/logs/`
+- **Knowledge Completion**: Reusable patterns stored in `memory-bank/knowledge/code-patterns/`
+
+### Memory Bank Slash Commands
+
+Claude Code provides custom slash commands for Memory Bank operations:
+
+**Daily Development**:
+- `/mb-status` - Comprehensive project status overview
+- `/mb-tasks [action]` - Interactive task management (list, add, complete, prioritize)
+- `/mb-log-issue [title]` - Guided issue documentation with context analysis
+
+**Knowledge Management**:
+- `/mb-save-pattern [type]` - Extract reusable code patterns from selected code
+- `/mb-log-decision [title]` - Record architectural decisions (quick or formal ADR)
+- `/mb-search [query]` - Search memory bank for relevant information
+
+**Analysis & Planning**:
+- `/mb-review-sprint` - Sprint retrospective with insights and recommendations
+- `/mb-help [command]` - Display help for Memory Bank commands
+
+**Quick Usage Examples**:
+```bash
+/mb-status                          # Daily startup routine
+/mb-log-issue "CORS API timeout"    # Log specific issue
+/mb-save-pattern hook              # Save selected code as hook pattern
+/mb-tasks add                      # Add new task to current sprint
+/mb-search "API error handling"    # Search for related knowledge
+/mb-review-sprint                  # End-of-sprint retrospective
+/mb-help                           # Show all available commands
+```
+
+**Getting Help**:
+- `/mb-help` - Overview of all Memory Bank commands
+- `/mb-help [command]` - Help for specific command
+- `[command] help` - Alternative help syntax (e.g., `/mb-status help`)
+
+**Daily Memory Bank Workflow**:
+1. **Start of day**: `/mb-status` - Review current project state and priorities
+2. **During development**: 
+   - `/mb-log-issue [title]` - Document problems as they arise
+   - `/mb-save-pattern [type]` - Capture useful code patterns
+   - `/mb-log-decision [title]` - Record important technical decisions
+3. **Task management**: `/mb-tasks [action]` - Track and update sprint progress
+4. **Knowledge search**: `/mb-search [query]` - Find relevant past solutions
+5. **Sprint end**: `/mb-review-sprint` - Analyze progress and plan improvements
+
+**Memory Bank Integration**:
+- Commands automatically read/write to appropriate memory-bank files
+- AI provides context analysis based on historical data
+- Pattern recognition helps avoid repeated issues and promotes code reuse
+
+
 ## Project Status
 Currently in Phase 3 (Frontend-Backend Integration) with working API communication between Next.js frontend and FastAPI backend. AI model endpoints (NVIDIA NIM) are functional with proper request validation and error handling.
+
+**Memory Bank System**: ✅ **Active**
+- Dynamic development knowledge base established in `memory-bank/`
+- 8 custom slash commands implemented for efficient workflow
+- Integration with SPARC methodology for rapid iteration development
+- Automated knowledge capture and pattern recognition ready
+
+**Active Memory Bank Status**: Use `/mb-status` for current project overview and `/mb-help` for command guidance.
